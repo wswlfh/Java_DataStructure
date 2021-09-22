@@ -83,10 +83,21 @@ public class Main {
         return (flag == 1) ? 1 : 0;
     }
 
+    //对Java中Arrays类的Api进行test
+    private void ArraysTest(){
+        int[] arr = {1,2,3,4,5};
+        //fill()
+        Arrays.fill(arr,0); //将arr全部置零
+        System.out.println(Arrays.toString(arr));
+
+        //将(l,r]之间的内容全部置为val
+        Arrays.fill(arr,1,2,1);
+        System.out.println(Arrays.toString(arr));
+    }
     public static void main(String[] args) {
         Main main = new Main();
         //main.random();
-        System.out.println("aaa");
+        main.ArraysTest();
     }
 
 
