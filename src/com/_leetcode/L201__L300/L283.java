@@ -11,7 +11,7 @@ public class L283 {
             return;
         int j = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i]!=0){
+            if (nums[i] != 0) {
                 nums[j] = nums[i];
                 j++;
             }
@@ -20,5 +20,10 @@ public class L283 {
             nums[i] = 0;
         }
     }
+
+    public void moveZeroes2(int[] nums) {
+
+    }
+
 }
 

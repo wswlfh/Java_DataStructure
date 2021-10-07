@@ -225,7 +225,7 @@ public class BST<E extends Comparable<E>> { // 让E具有可比较性
             node.left = remove(node.left, e);
             return node;
         }
-        else if (e.compareTo(node.e) < 0) {
+        else if (e.compareTo(node.e) > 0) {
             node.right = remove(node.right, e);
             return node;
         }

@@ -4,13 +4,19 @@ public class Array<E> {
     private int size;  //当前元素个数
     private E data[];
 
-    Array(int capacity) {
+    public Array(int capacity) {
         data = (E[]) new Object[capacity];
         size = 0;
     }
 
-    Array() {
+    public Array() {
         this(10); //调用有参构造函数
+    }
+
+    public Array(E[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            addLast(arr[i]);
+        }
     }
 
     public int getSize() {
@@ -114,6 +120,14 @@ public class Array<E> {
                 return i;
         }
         return -1;
+    }
+
+    //交换
+    public void swap(int a,int b){
+        E t = data[a];
+        data[a] = data[b];
+        data[b] = t;
+
     }
 
     @Override //覆盖父类写法：当使用println(arr)时默认使用toString函数，这里重写使用StringBuilder自定义输出数组内容

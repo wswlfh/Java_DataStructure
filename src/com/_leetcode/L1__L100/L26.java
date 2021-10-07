@@ -29,10 +29,9 @@ public class L26 {
     private static int removeDuplicates2(int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;
-        int fast = 1,slow = 1;
-
-        while (fast < n){
-            if (nums[fast - 1] != nums[fast]){ //如果找到不重复的，就换回来
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (nums[fast - 1] != nums[fast]) { //如果找到不重复的，就换回来
                 nums[slow] = nums[fast];
                 slow++;
             }
@@ -40,6 +39,7 @@ public class L26 {
         }
         return slow;
     }
+
 
     //
     public static void main(String[] args) {
