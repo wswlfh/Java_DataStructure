@@ -58,9 +58,10 @@ public class L204 {
     //复杂度 O(n log(log n))
     public static int countPrimes3(int n) {
         int[] isPrime = new int[n]; //默认为0
-        Arrays.fill(isPrime, 1);
         int count = 0;
         for (int i = 2; i < n; i++) {
+            if (isPrime[i] != 1)
+                continue;
             if (isPrime[i] == 1) count++;
             //这里不用long的话 i * i 就会超过最大整数溢出了
             if ((long) i * i < n) {
@@ -69,8 +70,10 @@ public class L204 {
                 }
             }
         }
+
         return count;
     }
+
 
 
     public static void main(String[] args) {

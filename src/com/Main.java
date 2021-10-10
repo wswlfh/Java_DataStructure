@@ -1,10 +1,7 @@
 package com;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 
 
 public class Main {
@@ -83,10 +80,17 @@ public class Main {
         return (flag == 1) ? 1 : 0;
     }
 
+    //牛客华为HJ1
+    public static void HJI(){
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.nextLine();
+        String[] words = word.split(" ");
+        System.out.println(words[words.length - 1].length());
+    }
     public static void main(String[] args) {
         Main main = new Main();
         //main.random();
-        System.out.println("aaa");
+        HJI();
     }
 
 
