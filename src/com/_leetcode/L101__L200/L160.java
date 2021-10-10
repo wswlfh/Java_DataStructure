@@ -38,6 +38,7 @@ public class L160 {
             pA = (pA == null) ? headB : pA.next;
             pB = (pB == null) ? headA : pB.next;
         }
+        System.out.println(pA.hashCode() + " " + pB.hashCode());
         return pA;
     }
 

@@ -5,19 +5,25 @@ import com._leetcode.ListNode;
 import java.util.Stack;
 
 public class L206 {
-    //Solution1：用三个指针，prev永远指向首部，cur每指向一个节点，就先存储这个节点的下一个节点next；然后进行cur和prev进行置换，cur回到下一段链表(next所指的部分)
+    //Solution1：三指针法
+    //          三指针: newHead cur next
+    //          思路：将链表拆解成两部分：一部分原序，一部分反序
+    //              newHead为反序链表的首部(开始为空)，cur为原序首部，next为cur.next 待定的新原序首部
+    //              cur指向newHead，然后cur变成newHead，这样反序链表就添加了一个新元素且为首部
+    //              原序元素少了一个，这时候要确定新的原序首部(cur=next)，next提前保存了
+    //              当cur==null时 反转完毕
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null)
             return head;
-        ListNode prev = null;
+        ListNode newHead = null;
         ListNode cur = head;
         while (cur != null) {
             ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
+            cur.next = newHead;
+            newHead = cur;
             cur = next;
         }
-        return prev;
+        return newHead;
     }
 
     //Solution2：递归 newHead = reverseList(node)
@@ -49,24 +55,43 @@ public class L206 {
         return newHead.next;
     }
 
-    //Solution4：使用栈，出栈顺序正好就是逆转
+    //Solution4：使用栈
+    //          遍历链表 压节点
+    //          遍历链表 出栈重新组织节点顺序
     public ListNode reverseList4(ListNode head) {
         if (head == null || head.next == null)
             return head;
         Stack<ListNode> stack = new Stack<>();  // 用笔演化一下入栈过程
-        while (head!= null){
+        while (head != null) {
             stack.push(head);
             head = head.next;
         }
         ListNode node = stack.pop();
         ListNode newHead = node;
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             ListNode tempNode = stack.pop();
             node.next = tempNode;
             node = node.next;
         }
         node.next = null;  //这一步至关重要
         return newHead;
+    }
+    //Solution5：使用栈，
+    //          遍历链表 压节点的值
+    //          遍历链表 出栈赋值
+    public ListNode reverseList5(ListNode head) {
+        Stack<Integer> stack = new Stack<>();
+        ListNode node = head;
+        while (node != null) {
+            stack.push(node.val);
+            node = node.next;
+        }
+        node = head;
+        while (node != null) {
+            node.val = stack.pop();
+            node = node.next;
+        }
+        return head;
     }
 }
 

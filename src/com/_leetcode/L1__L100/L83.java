@@ -28,8 +28,21 @@ public class L83 {
         return dummyHead.next;
     }
 
+    public ListNode deleteDuplicates2(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode cur = head;
+        while (cur.next != null) {
+            if (cur.val == cur.next.val)
+                cur.next = cur.next.next;
+            else //想想这里为什么用else：因为重复的次数不止两次，所以要保持cur不动继续进入if判断
+                cur = cur.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {2,2,1,1};
+        int[] arr = {2, 2, 1, 1};
         ListNode node = new ListNode().buildList(arr);
         node = deleteDuplicates(node);
         while (node != null) {

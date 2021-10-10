@@ -18,22 +18,17 @@ public class L75 {
 
     //Solution2：统计法，遍历一次扫描所有元素统计个数，然后还原
     public static void sortColors2(int[] nums) {
-        if (nums.length <= 1)
-            return;
-        int[] count = new int[nums.length + 1];
+        int[] count = new int[3];
         for (int i = 0; i < nums.length; i++)
             count[nums[i]]++;
 
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < count.length; i++) {
+        int k = 0;
+        for (int i = 0; i < 3; i++) {
             while (count[i] != 0) {
-                list.add(i);
+                nums[k++] = i;
                 count[i]--;
             }
         }
-        for (int i = 0; i < nums.length; i++)
-            nums[i] = list.get(i);
-
     }
 
     //Solution3: 一次三路快排

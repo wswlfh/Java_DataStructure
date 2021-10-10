@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class L202 {
     //202.快乐数
-    /*
+    /* Solution：用set记录中间数
     问题分析：
     设getNext(n)为n经过各位数平方和相加的一个数，问题解决关键在于 getNext(n)什么时候为1
     情况1：如果运气好，一直递归getNext(n)可能会得到结果
@@ -15,15 +15,14 @@ public class L202 {
      */
     //Solution1：使用哈希集合
     public boolean isHappy(int n) {
-        if (n == 1)
-            return true;
-        HashSet<Integer> set = new HashSet<>();
-        while (!set.contains(n) && n != 1) {
+        HashSet<Object> set = new HashSet<>();
+        while (n != 1) {
             set.add(n);
             n = getNext(n);
-
+            if (set.contains(n)) //包含之前的数，说明陷入循环
+                return false;
         }
-        return n == 1;
+        return true;
     }
 
     private int getNext(int n) {
@@ -33,5 +32,11 @@ public class L202 {
             n = n / 10;
         }
         return res;
+    }
+
+
+    public static void main(String[] args) {
+
+
     }
 }

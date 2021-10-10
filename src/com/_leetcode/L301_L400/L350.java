@@ -9,21 +9,20 @@ public class L350 {
       给定两个数组，编写一个函数来计算它们的交集。
       与349区别是：求出带有重复元素的交集
      */
+
+    //Solution：把nums1全部放入一个map中，然后依次遍历nums2的元素在map中查询是否存在，若存在，取出后更新map
     public int[] intersect(int[] nums1, int[] nums2) {
         if (nums1 == null || nums2 == null)
             return null;
         HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums1) {
-            if (map.containsKey(num))
-                map.replace(num, map.get(num) + 1);
-            else
-                map.put(num, 1);
-        }
+        for (int num : nums1)
+            map.put(num, map.getOrDefault(num, 0) + 1);
+
         ArrayList<Integer> list = new ArrayList<>();
         for (int num : nums2) {
             if (map.containsKey(num) && map.get(num) > 0) {
                 list.add(num);
-                map.replace(num, map.get(num) - 1);
+                map.put(num, map.get(num) - 1);
             }
         }
         int[] res = new int[list.size()];
