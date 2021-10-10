@@ -12,12 +12,44 @@ public class L125 {
         StringBuilder res = new StringBuilder();
         s = s.toLowerCase();
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) >= 'a' && s.charAt(i)<='z' || s.charAt(i) >= '0' && s.charAt(i)<='9')
+            if (s.charAt(i) >= 'a' && s.charAt(i) <= 'z' || s.charAt(i) >= '0' && s.charAt(i) <= '9')
                 res.append(s.charAt(i));
         }
         if (res.toString().equals(res.reverse().toString()))
             return true;
         return false;
+    }
+
+    //Solution2：对撞指针
+    //两端指针向中间靠拢，过滤掉符号只保留字母和数字，如果不是回文串则立马返回false
+    public boolean isPalindrome2(String s) {
+        int l = 0;
+        int r = s.length() - 1;
+        char[] chars = s.toLowerCase().toCharArray();
+
+        while (l < r) {
+            if (isSymbol(chars[l])) {
+                l++;
+                continue;
+            }
+            if (isSymbol(chars[r])) {
+                r--;
+                continue;
+            }
+            if (chars[l] != chars[r])
+                return false;
+            else {
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isSymbol(char c) {
+        if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z'))
+            return false;
+        return true;
     }
 
     public static void main(String[] args) {

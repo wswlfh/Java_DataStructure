@@ -5,7 +5,8 @@ import com._leetcode.ListNode;
 import java.util.Stack;
 
 public class L206 {
-    //Solution1：用三个指针，prev永远指向首部，cur每指向一个节点，就先存储这个节点的下一个节点next；然后进行cur和prev进行置换，cur回到下一段链表(next所指的部分)
+    //Solution1：用三个指针，prev永远指向首部，cur每指向一个节点，就先存储这个节点的下一个节点next；
+    // 然后进行cur和prev进行置换，cur回到下一段链表(next所指的部分)
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null)
             return head;

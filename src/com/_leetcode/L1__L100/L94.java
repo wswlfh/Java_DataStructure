@@ -2,10 +2,7 @@ package com._leetcode.L1__L100;
 
 import com._leetcode.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class L94 {
     //94.二叉树的中序遍历
@@ -13,20 +10,19 @@ public class L94 {
     //出栈顺序即为中序遍历
     //前序遍历是 进入循环前先压自己，进入循环后出栈，再压右再压左，左右压完，取出继续
     public List<Integer> inorderTraversal(TreeNode root) {
-        if (root == null)
-            return null;
-        ArrayList<Integer> list = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()){
-            while (root != null){
-                stack.push(root.left);
+        List<Integer> res = new ArrayList<Integer>();
+        Deque<TreeNode> stk = new LinkedList<TreeNode>();
+        while (root != null || !stk.isEmpty()) {
+            while (root != null) {
+                stk.push(root);
                 root = root.left;
             }
-            root = stack.pop();
-            list.add(root.val);
+            root = stk.pop();
+            res.add(root.val);
             root = root.right;
         }
-        return  list;
+        return res;
     }
+
+
 }

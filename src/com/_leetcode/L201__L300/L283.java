@@ -21,8 +21,16 @@ public class L283 {
         }
     }
 
+    //Solution2：似快排思路：从前向后遍历，维护[0，k]为非零的元素
     public void moveZeroes2(int[] nums) {
-
+        int k = -1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                k++;
+                nums[k] = nums[i];
+                if (k != i) nums[i] = 0; //当i不等于k，意味着这个不为0的数的位置可以替换为0（因为用不着了）
+            }
+        }
     }
 
 }

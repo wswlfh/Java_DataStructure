@@ -22,24 +22,22 @@ public class L167 {
         return null;
     }
 
-    //Solution2：二分法 注意2分的边界问题
+    //Solution1: 二分法
+    //思路：有序的数组可以考虑二分法：选取一个元素num[i]，那么在[i+1,n-1]开区间中寻找数target - num[i]
+    //用二分法的思路来寻找，如果当前[i+1,n-1]中不存在j使得num[j] = target - num[i]，就进入下一轮
     public static int[] twoSum2(int[] numbers, int target) {
-        int[] ans = new int[2];
         for (int i = 0; i < numbers.length; i++) {
-            int e = target - numbers[i];
+            int key = target - numbers[i];
             int l = i + 1;
             int r = numbers.length - 1;
             while (l <= r) {
                 int mid = l + (r - l) / 2;
-                if (numbers[mid] < e)
+                if (numbers[mid] == key)
+                    return new int[]{i + 1, mid + 1};
+                if (numbers[mid] < key)
                     l = mid + 1;
-                else if (numbers[mid] > e)
+                else
                     r = mid - 1;
-                else {
-                    ans[0] = i + 1;
-                    ans[1] = mid + 1;
-                    return ans;
-                }
             }
         }
         return null;
@@ -53,13 +51,13 @@ public class L167 {
         assert (numbers.length >= 2);
 
         int l = 0, r = numbers.length - 1;
-        while (l < r) {
-            if (numbers[l] + numbers[r] == target)
-                return new int[]{l + 1, r + 1};
+        while (l < r) { //有效区间
+            if (numbers[l] + numbers[r] > target)
+                r--;
             else if (numbers[l] + numbers[r] < target)
                 l++;
-            else  //numbers[l] + numbers[r] > target
-                r--;
+            else
+                return new int[]{l + 1, r + 1};
         }
 
         return null;

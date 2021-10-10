@@ -24,7 +24,7 @@ public class L26 {
         return r + 1;
     }
 
-    //双指针法 : 一个定标，一个向后移动 fast
+    //双指针法 : 一个定标slow，定在有效数组+1的位置[0,slow-1]是有效的，一个向后移动 fast
     //重点是 fast只管向后移动，不用再返回来
     private static int removeDuplicates2(int[] nums) {
         int n = nums.length;
@@ -39,7 +39,6 @@ public class L26 {
         }
         return slow;
     }
-
 
     //
     public static void main(String[] args) {

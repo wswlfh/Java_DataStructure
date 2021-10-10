@@ -21,7 +21,6 @@ public class L202 {
         while (!set.contains(n) && n != 1) {
             set.add(n);
             n = getNext(n);
-
         }
         return n == 1;
     }
