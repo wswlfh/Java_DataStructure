@@ -82,8 +82,8 @@ public class L63 {
 
     //Solution2：动态规划，速通
     public int uniquePathsWithObstacles3(int[][] obstacleGrid) {
-        m = obstacleGrid.length;
-        n = obstacleGrid[0].length;
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
 
         if (obstacleGrid[m - 1][n - 1] == 1)
             return 0;

@@ -34,8 +34,9 @@ public class KnapsackProblem {
             return 0;
         if (memo[index][capacity] != -1)
             return memo[index][capacity];
-
+        //不放这个物品
         int branch1 = bestValue(index - 1, capacity);
+        //能不能放下这个物品
         int branch2 = (weight[index] > capacity) ? 0 :
                 value[index] + bestValue(index - 1, capacity - weight[index]);
         memo[index][capacity] = Math.max(branch1, branch2);
@@ -44,9 +45,13 @@ public class KnapsackProblem {
     }
 
     private int bestValueNR(int n, int capacity) {
+
+        //记录只有一个物品时，背包对应的容量能否放下
         for (int i = 0; i <= capacity; i++) {
             memo[0][i] = (weight[0] > i) ? 0 : weight[0];
         }
+
+        //f(i,c)
         for (int i = 1; i < n; i++) {
             for (int j = 0; j <= capacity; j++) {
                 int branch1 = memo[i - 1][j];

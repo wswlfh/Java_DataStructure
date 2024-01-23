@@ -29,7 +29,7 @@ public class L451 {
         return ans.toString();
     }
 
-    //Solution2：根据Collections.sort()方法 对map中的value进行排序
+    //Solution2：根据Collections.com.sort()方法 对map中的value进行排序
     //           先存入map,将key存入list，然后重写Comparator
     public String frequencySort2(String s) {
         HashMap<Character, Integer> map = new HashMap<>();

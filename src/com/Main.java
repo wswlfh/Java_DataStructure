@@ -92,10 +92,23 @@ public class Main {
     public static void main(String[] args) {
         //Main main = new Main();
         //main.random();
+        System.out.println(14^3);
+    }
 
-
-        System.out.println(System.currentTimeMillis());
-        System.out.println(new Timestamp(1635299723818l));
+    enum AccountType
+    {
+        SAVING, FIXED, CURRENT;
+        private AccountType()
+        {
+            System.out.println("It is a account type");
+        }
+    }
+    static class EnumOne
+    {
+        public static void main(String[]args)
+        {
+            System.out.println(AccountType.FIXED);
+        }
     }
 
 

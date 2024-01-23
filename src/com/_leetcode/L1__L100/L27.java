@@ -11,7 +11,7 @@ public class L27 {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
                 k++;
-                if (k != i) nums[k] = nums[i];
+                nums[k] = nums[i];
             }
         }
         return k + 1;

@@ -8,12 +8,12 @@ public class L213 {
     //213. 打家劫舍 II
 
     //Solution1：两次动态规划 求 max{[1,....,n-1]}和max{[0,....,n-2]} 哪个大
-    public  int rob(int[] nums) {
+    public int rob(int[] nums) {
         int n = nums.length;
         if (n == 1)
             return nums[0];
 
-        return Math.max(robMax(nums,0,n-2),robMax(nums,1,n-1));
+        return Math.max(robMax(nums, 0, n - 2), robMax(nums, 1, n - 1));
     }
 
     //终极版 求 max[start,...,end]

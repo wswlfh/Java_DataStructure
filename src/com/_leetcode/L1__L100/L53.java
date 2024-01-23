@@ -40,13 +40,27 @@ public class L53 {
         memo = new int[nums.length];
         Arrays.fill(memo, -1);
         max = memo[nums.length - 1] = nums[nums.length - 1]; //防止最后一位元素的单序列是最大的
-
         for (int i = nums.length - 2; i >= 0; i--) {
             memo[i] = Math.max(nums[i], nums[i] + memo[i + 1]);
             max = Math.max(memo[i],max);
         }
         return max;
     }
+
+    public int maxSubArray3(int[] nums) {
+        int[] memo = new int[nums.length];
+        int ans;
+        ans = memo[nums.length - 1] = nums[nums.length - 1];
+
+        for (int i = nums.length - 2; i >= 0; i--) {
+            memo[i] = Math.max(nums[i], nums[i] + memo[i + 1]);
+            ans = Math.max(ans, memo[i]);
+        }
+
+        return ans;
+    }
+
+
 
     public static void main(String[] args) {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};

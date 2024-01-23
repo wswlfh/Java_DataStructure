@@ -46,10 +46,8 @@ public class L21 {
 
     //Solution2：递归法: 分成两部分，递归思想
     public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
-        if (l1 == null)
-            return l2;
-        if (l2 == null)
-            return l1;
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
         if (l1.val < l2.val) {
             l1.next = mergeTwoLists2(l1.next, l2);
             return l1;

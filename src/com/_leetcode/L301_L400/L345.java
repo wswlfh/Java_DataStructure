@@ -28,7 +28,7 @@ public class L345 {
                 res.append(s.charAt(i));
             }
         }
-        res = res.reverse();
+        res.reverse();
         StringBuilder ans = new StringBuilder();
         ans.append(s);
         int index = 0;
@@ -48,11 +48,11 @@ public class L345 {
         while (l < r) {
             //若l或r中有一方不是元音，就一直跳过
             //用indexOf方法，查找单个字符是否存在于temp串，也就是判断是否为元音
-            if (temp.indexOf((int) chars[l]) == -1) {
+            if (temp.indexOf(chars[l]) == -1) {
                 l++;
                 continue;
             }
-            if (temp.indexOf((int) chars[r]) == -1) {
+            if (temp.indexOf(chars[r]) == -1) {
                 r--;
                 continue;
             }

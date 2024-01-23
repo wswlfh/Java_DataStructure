@@ -18,7 +18,7 @@ public class ListNode {
 
     public static ListNode buildList(int[] nums) {
         ListNode dummyHead = new ListNode(-1);
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = nums.length - 1; i >= 0; i--) {
             ListNode node = new ListNode(nums[i]);
             node.next = dummyHead.next;
             dummyHead.next = node;

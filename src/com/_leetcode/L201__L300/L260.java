@@ -9,7 +9,7 @@ public class L260 {
 
     //Solution1：哈希map
     public int[] singleNumber(int[] nums) {
-        //Arrays.sort(nums);
+        //Arrays.com.sort(nums);
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i]))

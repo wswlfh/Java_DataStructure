@@ -2,8 +2,6 @@ package com._leetcode.L201__L300;
 
 import com._leetcode.TreeNode;
 
-import java.util.Vector;
-
 public class L222 {
     public int count = 0;
 

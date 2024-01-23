@@ -127,6 +127,8 @@ public class BST<E extends Comparable<E>> { // 让E具有可比较性
         preOrder(node.right);
     }
 
+
+
     //层序 easy
     public void leverOrder() {
         Queue<Node> queue = new LinkedList<>();  //向上转型
@@ -343,6 +345,16 @@ public class BST<E extends Comparable<E>> { // 让E具有可比较性
 
             return true;
         }
+
+    }
+
+    public static void main(String[] args) {
+        BST<Integer> bst = new BST<>();
+        int[] arr = {0, 5, 1, 6, 2, 12, 9};
+        for (int x : arr){
+            bst.add(x);
+        }
+        bst.printNode();
 
     }
 

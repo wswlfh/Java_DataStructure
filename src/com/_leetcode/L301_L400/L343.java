@@ -43,9 +43,10 @@ public class L343 {
         int[] memo = new int[n + 1];
         memo[1] = 1;
         for (int i = 2; i <= n; i++) {
-            for (int j = 1; j <= i - 1; j++) {
-                //在构建memo[i]的过程中，memo[i-j]早在之前被构建好了
-                memo[i] = Math.max(Math.max(memo[i], j * (i - j)),j * memo[i-j]);
+            for (int j = 1; j < i; j++) {
+                //比较 原来的memo[i] 和 j * memo[i-j] 哪个大
+                // 但如果有的数不需要再分就会更大 即 (i-j) > memo[i-j] 的情况，所以要再判断一次
+                memo[i] = Math.max(memo[i], Math.max(j * memo[i - j], j * (i - j)));
             }
         }
         return memo[n];

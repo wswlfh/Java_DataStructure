@@ -32,29 +32,28 @@ public class L322 {
         return dp[amount];
     }
 
-    //Solution2：解决重叠子问题，添加备忘录：即把dp的结果保存下来，算法一边维护dp，一边从里面查询
+    //Solution2：Solution：动态规划
+    // 完全背包不需要二维数组！因为每个物品都可以选，所以只要关注与背包容量即可
+    // 状态转移方程：F(C) = min{1+F(C-c0),1+F(C-c1),....,1+F(C-cn-1)}, F(C-ci) != -1
+    // 每个硬币都可以选
     public int coinChange2(int[] coins, int amount) {
         int[] memo = new int[amount + 1];
-        Arrays.fill(memo, Integer.MAX_VALUE - 1);
-        return dp(coins, amount, memo);
+        int ans = dp(coins, memo, amount);
+        return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 
-    private int dp(int[] coins, int amount, int[] memo) {
-        if (amount == 0) return 0;
-        if (amount < 0) return -1;
-
-        if (memo[amount] != Integer.MAX_VALUE - 1)
-            return memo[amount];
-        int res = Integer.MAX_VALUE;
+    private int dp(int[] coins, int[] memo, int C) {
+        if (C == 0) return 0;
+        if (C < 0) return -1;
+        if (memo[C] != 0) return memo[C];
+        //每种硬币都要选
+        memo[C] = Integer.MAX_VALUE;
         for (int coin : coins) {
-            int sub = dp(coins, amount - coin,memo);
-            if (sub == -1)
-                continue;
-            res = Math.min(res, 1 + sub);
+            int sub = dp(coins, memo, C - coin);
+            if (sub == -1) continue;
+            memo[C] = Math.min(memo[C], sub + 1);
         }
-
-        memo[amount] = res == Integer.MAX_VALUE ? -1 : res;
-        return memo[amount];
+        return memo[C];
     }
 
 
@@ -71,7 +70,7 @@ public class L322 {
             }
 
         }
-        return dp[amount] == Integer.MAX_VALUE -1 ? -1 : dp[amount];
+        return dp[amount] == Integer.MAX_VALUE - 1 ? -1 : dp[amount];
     }
 
 
